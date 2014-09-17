@@ -2,7 +2,7 @@
 
 %form
   %section.repo-select
-    %select{name: 'repository'}
+    %select.repos{name: 'repository'}
       - for repository in @repositories.models
         - full_name = repository.get('full_name')
         - if localStorage['new_issue_last_repo'] == repository.get('full_name')
@@ -13,6 +13,14 @@
   %section
     %label{for: "title"} Title:
     %input{name: "title", type: "text", value: ""}
+
+  %section
+    %label{for: "assignee"} Assignee:
+    %input.assignee{ type: "hidden" name: "assignee"}
+
+  %section
+    %label{for: "milestone"} Milestone:
+    .%input.milestone{ type: "hidden" name: "milestone"}
 
   %section
     %label{for: "body"} Comment:
